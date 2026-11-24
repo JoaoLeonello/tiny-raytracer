@@ -24,6 +24,16 @@ python3 mirrors.py 1200 630 mirrors.png
 
 ![Six mirrored spheres reflecting each other](images/mirrors.png)
 
+## Real time in the browser
+
+`web/index.html` runs the same mirrors scene in WebGL2. The tracing code is ported to a GLSL fragment shader, so the GPU traces every pixel in parallel, every frame. The small spheres bounce, the purple one orbits, and you can drag to move the camera and scroll to zoom. Open the file in any recent browser; there is nothing to install or serve.
+
+GLSL has no recursion, so the reflection is a loop of up to 10 bounces that carries how much light is left after each mirror.
+
+![Animated mirrored spheres](images/mirrors.gif)
+
+The GIF was rendered frame by frame with the Python tracer, 60 frames at 480 × 252.
+
 ## Things to change
 
 - `SPHERES`: center, radius, color and reflectivity (0 is matte, close to 1 is a mirror).
